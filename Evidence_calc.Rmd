@@ -1,0 +1,906 @@
+---
+title: 'Evidenciômetro: uma ferramenta de avaliação da qualidade científica de alegações
+  em saúde - parte I'
+subtitle: 'Evidenciometer: a tool for evaluating the scientific quality of health
+  claims - part I'
+output:
+  html_document: default
+---
+
+```{=html}
+<style> 
+
+body { 
+
+text-align: justify} 
+
+</style>
+```
+<br>
+
+**Hércules Rezende Freitas, Ph.D.**$^{1, 2}$**, Pietra Almeida Rebello de Lima Gomes**$^{1}$**, Letícia Lopes Domingos Toledo**$^{1}$
+
+<br>
+
+$^{1}$Health Lab IBMR, Escola de Ciências da Saúde, Centro Universitário IBMR, Av. das Américas, 2603 22631-002 - Rio de Janeiro/RJ, Brasil. $^{2}$Laboratório de Erros Inatos do Metabolismo, Instituto de Bioquímica Leopoldo de Meis, Centro de Ciências da Saúde, Universidade Federal do Rio de Janeiro, Av. Carlos Chagas Fo. 373, Rio de Janeiro, RJ, 21941-599 - Rio de Janeiro/RJ, Brasil.
+
+<br>
+
+## Resumo
+
+<br>
+
+A avaliação da validade científica de alegações em saúde é complexa e, frequentemente, subjetiva. Com o propósito de assegurar maior objetividade e reprodutibilidade ao processso, além fornecer uma ferramenta simples para profissionais e a população, propôs-se a criação de um "Evidenciômetro". O instrumento do evidenciômetro será desenvolvido em duas etapas, sendo a primeira correspondente a este trabalho. Primeiro, um modelo de detecção do nível de evidência foi gerado, além de um aplicativo *web* de fácil utilização. Depois, alegações em saúde foram coletadas para análise sistemática da literatura e, finalmente, validação contra o modelo. O evidenciômetro, gerado aqui, permite a avaliação de evidências científicas através de critérios objetivos (*i.e.*, número de evidências, tamanho amostral e de efeito), além de garantir ao público a capacidade de conhecer a validade de alegações comuns em saúde.
+
+<br>
+
+**Palavras-chave:** evidência científica; evidenciômetro; aplicativo web; informação em saúde.
+
+<br>
+
+## Abstract
+
+<br>
+
+Assessing the scientific validity of health claims is complex and often subjective. In order to ensure greater objectivity and reproducibility to the process, while also providing a simple tool for professionals and the population, we propose the creation of an "Evidenciometer". The evidenciometer will be developed in two stages, the first corresponding to this work. First, a model for detecting the level of evidence was designed, in addition to a web application. Then, health claims were collected for systematic literature review and, finally, validation against the model. The evidenciometer, generated here, allows for the evaluation of scientific evidence using objective criteria (*i.e.*, number of studies, sample size, and effect size) and provides the public with the ability to examine the validity of common health claims.
+
+<br>
+
+**Keywords:** scientific evidence; evidenciometer; web application; health information.
+
+<br>
+
+## 1 Introdução
+
+<br>
+
+O fluxo de informações derivadas da produção científica em saúde, em síntese, envolve a testagem e validação experimental de hipóteses que, em um corpo de evidências, comporão os manuais (*i.e.*, guidelines) que refletem o consenso de uma determinada prática (SCHUNEMANN, 2008). Nas ciências da saúde, evidências são usadas por profissionais para assegurar o maior nível possível de beneficência ao paciente, sendo esse o objeto de estudo central da Bioética humana (FREITAS, 2015).
+
+No âmbito das políticas públicas, porém, o receptor da informação se torna o agente responsável por identificar as melhorias necessárias em seu contexto social que assegurarão, para si, saúde integral e prevenção dedoenças. Com esse propósito, políticas de educação em saúde buscam agregar informações complexas em um formato compreensível ao público-alvo, tarefa dificultada pelo contexto educacional brasileiro, que ainda apresenta taxa de analfabetismo de \~6,6% entre adultos e de \~18% entre idosos, além de \~32,2% de incompletude do ensino fundamental entre os maiores de 25 anos (dados do IBGE, 2020).
+
+No contexto da saúde pública, mudanças de hábito alimentar, a prática de exercícios físicos e a higienedo sono (AES) estão entre os principais elementos comportamentais na prevenção de desordens crônicas não transmissíveis (LAMBERG *et al.*, 2006). Apesar do reconhecimento da existência desses três pilares, a população carece de ferramentas capazes de ilustrar o nível de evidência de alegações em AES, o que pode levar a práticas detrimentais e a prejuízos no sistema público de saúde (PEREIRA *et al.*, 2017).
+
+Ferramentas direcionadas a ilustrar o nível de evidência para alguma alegação de saúde ou abordagem terapêutica são, em sua maioria, de caráter técnico, e não se prestam a garantir que o público também seja beneficiado pelo conhecimento do estado da arte naquele tópico, mesmo que este seja de relevância imediata à saúde pública.
+
+Com o propósito de reduzir a distância entre a produção acadêmica em saúde e o acesso à informação científica pelo público, o presente trabalho propõe a elaboração do "Evidenciômetro", uma ferramenta para a identificação do nível de evidência para alegações populares em AES. A geração dessa ferramenta tem potencial de afetar positivamente políticas públicas em saúde, além de estar sujeita a possíveis desdobramentos nas indústrias farmacêutica e de alimentos.
+
+<br>
+
+## 2 Metodologia
+
+<br>
+
+O presente trabalho foi desenvolvido com o propósito de [1] gerar uma ferramenta de informação do nível de evidência de alegações em saúde (parte I) e [2] validar a ferramenta por meio da obtenção de alegações do mundo real, geração de hipóteses e análise sistematizada da literatura (parte II). Para a coleta de alegações, foram utilizadas publicações (texto ou vídeo) de elevado alcance em redes sociais.
+
+<br>
+
+#### 2.1 Determinação do nível de evidência
+
+<br>
+
+##### 2.1.1 Evidências qualitativas
+
+<br>
+
+Considerando o nível de evidência qualitativa obtido, tem-se que:
+
+<br>
+
+1\. *Se* $1 \le N \le 3$,
+
+<br>
+
+2.1 *Se* $H_{0} = 0$ & $H_{1} > 0$ *, então*
+
+2.2 $Ev_{1}=\varphi*N-$$(\varphi*[e/e^{H_{1}}])$
+
+<br>
+
+3.1 *Se* $H_{0} > 0$ & $H_{1} = 0$ *, então*
+
+3.2 $Ev_{0}=\varphi*N-$$(\varphi*[e/e^{H_{0}}])$
+
+<br>
+
+4.1 *Se* $H_{0} > 0$ & $H_{1} > 0$ *, e se* $H_{1}/H_{0} > 1$, então
+
+4.2 $Ev_{1}=\varphi*N-$$(\varphi*[e/e^{(H_{1}/H_{0})}])$
+
+<br>
+
+5.1 *Se* $H_{0} > 0$ & $H_{1} > 0$ *, e se* $H_{1}/H_{0} \le 1$, então
+
+5.2 $Ev_{0}=\varphi*N-$$(\varphi*[e/e^{(H_{0}/H_{1})}])$
+
+<br>
+
+Onde $N$ é o nível de evidência qualitativa, $H_{0}$ é o número de trabalhos suportando a hipótese nula, $H_{1}$ é o número de trabalhos suportando a hipótese alternativa, $\varphi$ é a unidade do nível de evidência (*i.e.,* 0.1428571), $Ev_{0}$ é o nível de evidência a favor da hipótese nula, $Ev_{0}$ é o nível de evidência a favor da hipótese alternativa e $e$ é uma aproximação do número de Euler (*i.e.,* 2.718282).
+
+<br>
+
+##### 2.1.2 Evidências quantitativas
+
+<br>
+
+Considerando o nível de evidência quantitativa obtido, tem-se que:
+
+<br>
+
+6\. *Se* $4 \le N \le 7$,
+
+<br>
+
+7.1 *Se* $H_{0} = 0$ & $H_{1} > 0$ *, então*
+
+7.2 $Ev_{1}=\varphi*N-$$(\varphi/e^{(SzH_{1}/SdH_{1})})$
+
+<br>
+
+8.1 *Se* $H_{0} > 0$ & $H_{1} = 0$ *, então*
+
+8.2 $Ev_{0}=\varphi*N-$$(\varphi/e^{(SzH_{0}/SdH_{0})})$
+
+<br>
+
+9.1 *Se* $H_{0} > 0$ & $H_{1} > 0$ *, e se* $([SzH_{1}/SdH_{1}]*EzH_{1})/([SzH_{0}/SdH_{0}]*EzH_{0}) > 1$, então
+
+9.2 $Ev_{1}=\varphi*(N-1)+$$(\varphi/e^{(SzH_{0}/SzH_{1})})$
+
+<br>
+
+10.1 *Se* $H_{0} > 0$ & $H_{1} > 0$ *, e se* $([SzH_{1}/SdH_{1}]*EzH_{1})/([SzH_{0}/SdH_{0}]*EzH_{0}) \le 1$, então
+
+10.2 $Ev_{1}=\varphi*(N-1)+$$(\varphi/e^{(SzH_{1}/SzH_{0})})$
+
+<br>
+
+Onde $SzH_{0}$ é a soma do tamanho amostral entre os estudos suportando a hipótese nula, $SzH_{1}$ é a soma do tamanho amostral entre os estudos suportando a hipótese alternativa, $SdH_{0}$ é o desvio padrão da média amostral entre os estudos suportando a hipótese nula, $SdH_{1}$ é o desvio padrão da média amostral entre os estudos suportando a hipótese alternativa, $EzH_{0}$ é o tamanho de efeito médio entre os estudos suportando a hipótese nula e $EzH_{1}$ é o tamanho de efeito médio entre os estudos suportando a hipótese alternativa.
+
+<br>
+
+##### 2.1.3 Código
+
+<br>
+
+Baseado no modelo acima, uma função condicional (**código 1**) foi gerada em linguagem R (R Core Team, 2022; RStudio Team, 2022) para receber os *inputs* numéricos da literatura coletada e produzir o valor de evidenciômetro correspondente.
+
+<br>
+
+**Código 1**. Função condicional para geração de evidenciômetro.
+
+```{r echo=TRUE}
+
+evid_calc <- function(N, H1, H0, SzH0 = NULL, SzH1 = NULL, SdH0 = NULL, SdH1 = NULL, EfSzH1 = NULL, EfSzH0 = NULL){
+  if(N >= 1 & N <= 3){
+    phi = (1/7)
+    if(H0 == 0 & H1 > 0){
+      ev <- phi*N - (phi*(exp(1)/exp(1)^H1))
+      .GlobalEnv$ev <- ev
+      }
+    if(H0 > 0 & H1 == 0){
+      ev <- phi*N - (phi*(exp(1)/exp(1)^H0))
+      .GlobalEnv$ev <- ev
+      }
+    if(H0 > 0 & H1 > 0){
+      if(H1/H0 > 1){
+        ev <- phi*N - (phi*(exp(1)/exp(1)^(H1/H0)))
+        .GlobalEnv$ev <- ev
+        }
+      if(H1/H0 <= 1){
+        ev <- phi*N - (phi*(exp(1)/exp(1)^(H0/H1)))
+        .GlobalEnv$ev <- ev
+        }
+      }
+  }
+  if(N >= 4 & N <= 7){
+    phi = (1/7)
+    if(H0 == 0 & H1 > 0){
+      ev <- phi*(N) - (phi/exp(1)^(SzH1/SdH1))
+      .GlobalEnv$ev <- ev}
+    if(H0 > 0 & H1 == 0){
+      ev <- phi*(N) - (phi/exp(1)^(SzH0/SdH0))
+      .GlobalEnv$ev <- ev
+    }
+    if(H0 > 0 & H1 > 0){
+      if(((SzH1-SdH1)*EfSzH1)/((SzH0-SdH0)*EfSzH0) > 1){
+        ev <- phi*(N-1) + (phi/exp(1)^(SzH0/SzH1))
+        .GlobalEnv$ev <- ev
+      }
+      if(((SzH1-SdH1)*EfSzH1)/((SzH0-SdH0)*EfSzH0) <= 1){
+        ev <- phi*(N-1) + (phi/exp(1)^(SzH1/SzH0))
+        .GlobalEnv$ev <- ev
+      }
+    }
+  }
+  }
+
+```
+
+<br>
+
+#### 2.2 Interface do aplicativo
+
+<br>
+
+Posterior ao desenvolvimento do evidenciômetro, e ainda em linguagem R, uma interface de simples utilização foi projetada no formato de aplicativo *web* (*Shiny app*).
+
+<br>
+
+##### 2.2.1 Código
+
+<br>
+
+O **código 2**, abaixo, apresenta um modelo de interface do aplicativo *web* desenvolvido para o evidenciômetro. Em suma, a interface contém uma janela de seleção, um texto introdutório e um mapa de calor, que ilustra o nível de evidência da alegação selecionada.
+
+<br>
+
+**Código 2**. Interface do aplicativo *web*.
+
+```{r error=FALSE, message=FALSE, warning=FALSE, results='hide'}
+
+library(shiny)
+library(tidyverse)
+library(gplots)
+library(bslib)
+library(plotly)
+
+shinyUI(fluidPage(
+
+    titlePanel(" "), 
+    theme = bslib::bs_theme(bootswatch = "lux"),
+
+    sidebarLayout(
+        sidebarPanel(img(src = "labhub.png", height = 120, width = 240),
+                     h5("Seletor de alegacao"),
+
+            selectInput(inputId = "var", 
+                        label = h6("Selecione:"),
+                        choices = c("Alegacao 1" = 1, 
+                                    "Alegacao 2" = 2, 
+                                    "Alegacao 3" = 3, 
+                                    "Alegacao 4" = 4, 
+                                    "Alegacao 5" = 5), 
+                        selected = c("Alegacao 1" = 1))
+        ),
+
+        mainPanel(
+          h4("Seja bem-vindo(a) ao EVIDENCIOMETRO!"),
+          p(""),
+          strong("O projeto", span("EVIDENCIOMETRO", style = "color:black"), "e uma 
+            iniciativa do", span("Squad 2 do Health Lab IBMR.", style = "color:black")), 
+          p(""),
+          strong("Para usar a ferramenta, basta selecionar 
+                 as alegacoes no", span("menu a esqueda", style = "color:black"), 
+                 "e observar o nivel de evidencia no", 
+                 span("grafico abaixo.", style = "color:black")), 
+          p(""),
+          strong("Numeros mais", span("proximos de 0", style = "color:red"), 
+          "significam", span("baixo nivel de evidencia,", style = "color:red"), 
+          "enquanto numeros mais", span("proximos de 7", style = "color:blue"), 
+          "significam", span("elevado nivel de evidencia.", style = "color:blue"), 
+          span("Experimente!", style = "color:black")),
+            
+          plotlyOutput("distPlot")
+        )
+    )
+))
+```
+
+<br>
+
+#### 2.3 Servidor
+
+<br>
+
+Com o objetivo de tornar a interface do **código 2** responsiva, criou-se um servidor (**código 3**) capaz de ler dados planilhados (*i.e.*, .xlsx) e transformá-los em um mapa de calor, que alimentará o componente visual do evidenciômetro.
+
+<br>
+
+##### 2.3.1 Código
+
+<br>
+
+**Código 3**. Servidor do aplicativo *web*.
+
+```{r error=FALSE, message=FALSE, warning=FALSE, results='hide'}
+
+shinyServer(function(input, output) {
+
+    output$distPlot <- renderPlotly({
+
+        df <- readxl::read_excel("data.xslx")
+        nbr <- df[input$var,5]
+        nbr <- as.numeric(nbr)
+        if (nbr >= 0 & nbr < 0.1428571) {noe <- 7}
+        if (nbr > 0.1428571 & nbr < 0.2857143) {noe <- 6}
+        if (nbr > 0.2857143 & nbr < 0.4285714) {noe <- 5}
+        if (nbr > 0.4285714 & nbr < 0.5714286) {noe <- 4}
+        if (nbr > 0.5714286 & nbr < 0.7142857) {noe <- 3}
+        if (nbr > 0.7142857 & nbr < 0.8571429) {noe <- 2}
+        if (nbr > 0.8571429 & nbr <= 1) {noe <- 1}
+        Escala <- c(1, 0.8571429, 0.7142857, 0.5714286, 0.4285714, 0.2857143, 0.1428571)
+        Evidencia <- c(0,0,0,0,0,0,0)
+        dt <- cbind(Escala, Evidencia)
+        dt[noe,2] <- nbr
+        
+        plot_ly(x = c("Escala", "Evidencia"), 
+                y = Escala, 
+                z = dt, 
+                type = "heatmap", 
+                colors = RColorBrewer::brewer.pal(7, 'BuGn'))
+    })
+
+})
+```
+
+<br>
+
+#### 2.4 Identificação de alegações em saúde e construção de hipóteses
+
+<br>
+
+Com o objetivo de identificar alegações em saúde de ampla difusão, dois colaboradores buscaram, de forma independente, perfis de elevado alcance (*i.e.*, número absoluto de seguidores) na rede social Instagram e, em seguida, coletaram as alegações com o maior número de reações (*i.e.*, *likes*) no perfil. Depois, dados coletados por ambos os colaboradores foram compilados e as cinco principais alegações (em número absoluto de reações) utilizadas (**tabela 1**) para a etapa de construção de hipóteses.
+
+<br>
+
+**Tabela 1**. Alegações e hipóteses a serem utilizados para a validação da ferramenta evidenciômetro.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(kableExtra)
+
+tabum <- readxl::read_excel("C:\\Users\\hercu\\Downloads\\Evidenciometer_current.xlsx")
+
+tabum <- tabum[1:5, 1:2]
+
+kum <- kbl(caption = "Alegações e hipóteses no evidenciômetro", x = tabum)
+
+kable_classic(full_width = F, 
+              html_font = "Cambria", 
+              kable_input = kum)
+```
+
+<br>
+
+##### 2.4.1 Coleta e curadoria de trabalhos científicos
+
+<br>
+
+A partir das hipóteses obtidas, iniciou-se uma coleta sistemática de literatura que investigasse, ao menos, um dos problemas de pesquisa identificados. Para a busca de documentos originais que cumprissem os critérios do estudo, foram utilizadas bases de dados indexadas (*i.e.*, SciELO, NCBI e Cochrane Library). Para a pesquisa bibliográfica, foram utilizadas palavras-chave correspondentes às hipóteses do estudo (**tabela 2**).
+
+<br>
+
+**Tabela 2**. Palavras-chave utilizadas na busca de literatura indexada.
+
+```{r echo=FALSE}
+
+tabdois <- readxl::read_excel("C:\\Users\\hercu\\Downloads\\Evidenciometer_current.xlsx")
+
+tabdois <- tabdois[1:5, 2:3]
+
+kdois <- kbl(caption = "Palavras-chave da hipóteses delineadas", x = tabdois)
+
+kable_classic(full_width = F, 
+              html_font = "Cambria", 
+              kable_input = kdois)
+```
+
+<br>
+
+##### 2.4.2 Critérios de inclusão e exclusão
+
+<br>
+
+A pesquisa foi limitada aos artigos escritos em Inglês ou Português, publicados entre Janeiro de 1980 e Maio de 2022. Para os propósitos do presente estudo, não foram coletados trabalhos experimentais se os mesmos fossem realizados com animais e outros organismos modelo. Também foram excluídos artigos de qualidade metodológica insatisfatória (*e.g.*, trabalhos retratados), *pre-prints*, patentes, resumos de trabalhos não publicados na íntegra, livros, monografias, dissertações e teses. Foram excluídos trabalhos que não investigaram, ao menos, uma das hipóteses coletadas (**tabela 1**). Os critétios de inclusão específicos a cada estudo estão pontuados na **tabela 3**.
+
+<br>
+
+**Tabela 3**. Critérios de inclusão dos estudos coletados.
+
+```{r echo=FALSE}
+
+tabtres <- readxl::read_excel("C:\\Users\\hercu\\Downloads\\Evidenciometer_current.xlsx")
+
+tabtres <- tabtres[1:5, c(2,4)]
+
+ktres <- kbl(caption = "Palavras-chave da hipóteses delineadas", x = tabtres)
+
+kable_classic(full_width = F, 
+              html_font = "Cambria", 
+              kable_input = ktres)
+```
+
+<br>
+
+##### 2.4.3 Análise de dados e geração de repositório
+
+<br>
+
+Os trabalhos remanescentes, após etapas de inclusão e exclusão, foram categorizados de acordo com a respectiva hipótese e também adequados aos seus níveis de evidência (**tabela 4**). Para determinação da escala de evidência, só foram utilizados os trabalhos disponíveis no maior nível para cada hipótese. Trabalhos alocados em níveis inferiores foram utilizados na posterior análise sistemática da evidência.
+
+<br>
+
+**Tabela 4**. Níveis e escalas de evidência para categorização de trabalhos.
+
+```{r echo=FALSE}
+
+tabquatro <- readxl::read_excel("C:\\Users\\hercu\\Downloads\\Evidenciometer_current.xlsx",sheet = 'Evidenciometer')
+
+tabquatro <- tabquatro[1:7, 1:4]
+
+kquatro <- kbl(caption = "Níveis e escalas de evidência", x = tabquatro)
+
+kable_classic(full_width = F, 
+              html_font = "Cambria", 
+              kable_input = kquatro)
+```
+
+<br>
+
+A alocação dos trabalhos na escala de evidência foi realizada por meio de análise condicional (delineada no item "2.1 Determinação do nível de evidência"), que foi posteriormente adaptada a um *script* em linguagem R (item "2.1.3 Código"). Para o desenvolvimento do modelo de análise, criou-se uma base com $10^{4}$ conjuntos de dados randomizados (item "3.1 Dados simulados"). Finalmente, um modelo de aplicativo web (Shiny app, item "3.4 Ferramenta visual do evidenciômetro") foi desenvolvido para ilustrar a utilização da ferramenta pelo usuário final. O aplicativo e todos os códigos do presente estudo foram disponibilizados no respositório [IBMRHealth/Evidenciometer](https://github.com/IBMRHealth/Evidenceometer), na plataforma GitHub.
+
+<br>
+
+## 3 Resultados
+
+<br>
+
+#### 3.1 Nível de evidência
+
+<br>
+
+Em consonância com o modelo proposto em "2.1 Determinação do nível de evidência", uma base de dados foi criada para simular o perfil das distribuições geradas por cada condicional (ou nível de evidência). Considerando as características esperadas para cada aspecto do modelo, dados da base obedeceram aos seguintes critérios:
+
+<br>
+
+1.  $(N \in Z^*_{+} \mid 1 \le N \le 7)$
+
+2.  $(H_{1/0} \in Z_{+} \mid 0 \le H_{1/0} \le 1000)$
+
+3.  $(SzH_{1/0} \in Z^*_{+} \mid 1 \le SzH_{1/0} \le 1000)$
+
+4.  $(SdH_{1/0} \in R_{+} \mid 0 \le SdH_{1/0} \le 100)$
+
+5.  $(EzH_{1/0} \in R^*_{+} \mid 0.1 \le EzH_{1/0} \le 10)$
+
+<br>
+
+##### 3.1.1 Dados simulados
+
+<br>
+
+A **figura 1**, abaixo, apresenta o perfil dos evidenciômetros gerados com base em $10^4$ simulações. É possível notar que valores nas três primeiras escalas de evidência apresentam viés a favor do nível máximo de cada $N$. As quatro outras escalas, quantitativas, são distribuidas de maneira relativamente normal.
+
+```{r include=FALSE}
+library(ggpubr)
+library(RColorBrewer)
+
+N <- round(runif(10000, 1, 7), 0) 
+H1 <- round(runif(10000, 0, 1000), 0)
+H0 <- round(runif(10000, 0, 1000), 0)
+SzH0 <- round(runif(10000, 1, 1000), 0)
+SdH0 <- round(runif(10000, 0, 100), 0)
+SzH1 <- round(runif(10000, 1, 1000), 0)
+SdH1 <- round(runif(10000, 0, 100), 0)
+EfSzH1 <- runif(10000, 0.1, 10)
+EfSzH0 <- runif(10000, 0.1, 10)
+tdt <- cbind.data.frame(N, H1, H0, SzH0, SzH1, SdH0, SdH1, EfSzH1, EfSzH0)
+
+tut <- list()
+for (i in 1:length(tdt[,1])) {
+  evid_calc(N = tdt[i, 1], 
+            H1 = tdt[i, 2], 
+            H0 = tdt[i, 3], 
+            SzH0 = tdt[i, 4], 
+            SzH1 = tdt[i, 5], 
+            SdH0 = tdt[i, 6], 
+            SdH1 = tdt[i, 7], 
+            EfSzH1 = tdt[i, 8], 
+            EfSzH0 = tdt[i, 9])
+  tut[[i]] <- ev
+}
+
+tut <- as.numeric(tut)
+```
+
+<br>
+
+**Figura 1**. Distribuições simuladas na escala do evidenciômetro.
+
+```{r echo=FALSE}
+
+tdt <- cbind(tdt, tut)
+
+ggplot(data = tdt) + 
+  geom_histogram(aes(x = tut, y = ..density..), 
+                 bins = 50, 
+                 fill = 'gray70', 
+                 color = 'black') + 
+  geom_density(aes(x = tut), lwd = 1, colour = 'darkgreen') + 
+  theme(panel.background = element_blank(), 
+        axis.line = element_line(colour = 'black', 
+                                 size = .25)) + 
+  labs(x = 'Evidenciômetro', y = 'Densidade')
+```
+
+*Densidade das distribuições na escala de evidência. A linha verde revela as sete distribuições correspondentes a cada nível de evidência* $\varphi$*.*
+
+<br>
+
+O padrão identificado na **figura 1** pode ser visualizado individualmente na **figura 2**. Os padrões qualitativos de evidência se concentram nos níveis máximos das respectivas escalas. As distribuições quantitativas são platicurticas e de assimetria negativa, com densidade heterogênea na faixa mínima de cada escala.
+
+<br>
+
+**Figura 2**. Distribuições qualitativas e quantitativas na escala do evidenciômetro.
+
+```{r echo=FALSE}
+um <- filter(tdt, tdt[,'N'] == 1)
+dois <- filter(tdt, tdt[,'N'] == 2)
+tres <- filter(tdt, tdt[,'N'] == 3)
+quatro <- filter(tdt, tdt[,'N'] == 4)
+cinco <- filter(tdt, tdt[,'N'] == 5)
+seis <- filter(tdt, tdt[,'N'] == 6)
+sete <- filter(tdt, tdt[,'N'] == 7)
+
+gum<-ggplot(data = um) + 
+  geom_histogram(aes(x = tut, y = ..density..), 
+                 bins = 30, 
+                 fill = 'gray70', 
+                 color = 'black') + 
+  geom_density(aes(x = tut), lwd = 1, colour = 'darkgreen') + 
+  theme(panel.background = element_blank(), 
+        axis.line = element_line(colour = 'black', 
+                                 size = .25)) + 
+  labs(x = 'Evidenciômetro', y = 'Densidade')
+
+gdois<-ggplot(data = dois) + 
+  geom_histogram(aes(x = tut, y = ..density..), 
+                 bins = 30, 
+                 fill = 'gray70', 
+                 color = 'black') + 
+  geom_density(aes(x = tut), lwd = 1, colour = 'darkgreen') + 
+  theme(panel.background = element_blank(), 
+        axis.line = element_line(colour = 'black', 
+                                 size = .25)) + 
+  labs(x = 'Evidenciômetro', y = 'Densidade')
+
+gtres<-ggplot(data = tres) + 
+  geom_histogram(aes(x = tut, y = ..density..), 
+                 bins = 30, 
+                 fill = 'gray70', 
+                 color = 'black') + 
+  geom_density(aes(x = tut), lwd = 1, colour = 'darkgreen') + 
+  theme(panel.background = element_blank(), 
+        axis.line = element_line(colour = 'black', 
+                                 size = .25)) + 
+  labs(x = 'Evidenciômetro', y = 'Densidade')
+
+ggarrange(gum, gdois, gtres,
+          labels = c("A", "B", "C"), 
+          ncol = 3, nrow = 1)
+```
+
+<br>
+
+```{r echo=FALSE}
+gquatro<-ggplot(data = quatro) + 
+  geom_histogram(aes(x = tut, y = ..density..), 
+                 bins = 30, 
+                 fill = 'gray70', 
+                 color = 'black') + 
+  geom_density(aes(x = tut), lwd = 1, colour = 'darkgreen') + 
+  theme(panel.background = element_blank(), 
+        axis.line = element_line(colour = 'black', 
+                                 size = .25)) + 
+  labs(x = 'Evidenciômetro', y = 'Densidade')
+
+gcinco<-ggplot(data = cinco) + 
+  geom_histogram(aes(x = tut, y = ..density..), 
+                 bins = 30, 
+                 fill = 'gray70', 
+                 color = 'black') + 
+  geom_density(aes(x = tut), lwd = 1, colour = 'darkgreen') + 
+  theme(panel.background = element_blank(), 
+        axis.line = element_line(colour = 'black', 
+                                 size = .25)) + 
+  labs(x = 'Evidenciômetro', y = 'Densidade')
+
+gseis<-ggplot(data = seis) + 
+  geom_histogram(aes(x = tut, y = ..density..), 
+                 bins = 30, 
+                 fill = 'gray70', 
+                 color = 'black') + 
+  geom_density(aes(x = tut), lwd = 1, colour = 'darkgreen') + 
+  theme(panel.background = element_blank(), 
+        axis.line = element_line(colour = 'black', 
+                                 size = .25)) + 
+  labs(x = 'Evidenciômetro', y = 'Densidade')
+
+gsete<-ggplot(data = sete) + 
+  geom_histogram(aes(x = tut, y = ..density..), 
+                 bins = 30, 
+                 fill = 'gray70', 
+                 color = 'black') + 
+  geom_density(aes(x = tut), lwd = 1, colour = 'darkgreen') + 
+  theme(panel.background = element_blank(), 
+        axis.line = element_line(colour = 'black', 
+                                 size = .25)) + 
+  labs(x = 'Evidenciômetro', y = 'Densidade')
+
+ggarrange(gquatro, gcinco, gseis, gsete,
+          labels = c("D", "E", "F", "G"), 
+          ncol = 2, nrow = 2)
+```
+
+*Densidade das distribuições na escala de evidência. Figuras revelam as três distribuições qualitativas (acima) e quatro quantitativas (abaixo), de acordo com os níveis de evidência* $\varphi$*.*
+
+<br>
+
+As distribuições das **figuras 1** e **2** foram produzidas pela presença concomitante de estudos $H_{0}$ e $H_{1}$ na base de dados simulada. Se, por outro lado, os estudos coletados em um dado estrato de evidência forem exclusivamente $H_{0}$ ou $H_{1}$, a distribuição resultante será quase totalmente discretizada nos valores máximos de cada nível, como se nota na **figura 3**, produzida por $10^4$ simulações onde somente evidências $H_{1}$ foram detectadas.
+
+<br>
+
+**Figura 3**. Distribuição de evidenciômetros gerados por $10^{4}$ simulações de $H_{1}$.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+N <- round(runif(10000, 1, 7), 0) 
+H1 <- round(runif(10000, 0, 1000), 0)
+H0 <- round(runif(10000, 0, 0), 0)
+SzH0 <- round(runif(10000, 0, 0), 0)
+SdH0 <- round(runif(10000, 0, 0), 0)
+SzH1 <- round(runif(10000, 1, 1000), 0)
+SdH1 <- round(runif(10000, 0, 100), 0)
+EfSzH1 <- runif(10000, 0.1, 10)
+EfSzH0 <- runif(10000, 0, 0)
+tdt <- cbind.data.frame(N, H1, H0, SzH0, SzH1, SdH0, SdH1, EfSzH1, EfSzH0)
+
+tut <- list()
+for (i in 1:length(tdt[,1])) {
+  evid_calc(N = tdt[i, 1], 
+            H1 = tdt[i, 2], 
+            H0 = tdt[i, 3], 
+            SzH0 = tdt[i, 4], 
+            SzH1 = tdt[i, 5], 
+            SdH0 = tdt[i, 6], 
+            SdH1 = tdt[i, 7], 
+            EfSzH1 = tdt[i, 8], 
+            EfSzH0 = tdt[i, 9])
+  tut[[i]] <- ev
+}
+
+tut <- as.numeric(tut)
+
+tdt <- cbind(tdt, tut)
+
+ggplot(data = tdt) + 
+  geom_histogram(aes(x = tut, y = ..density..), 
+                 bins = 30, 
+                 fill = 'gray70', 
+                 color = 'black') + 
+  geom_density(aes(x = tut), lwd = 1, colour = 'darkgreen') + 
+  theme(panel.background = element_blank(), 
+        axis.line = element_line(colour = 'black', 
+                                 size = .25)) + 
+  labs(x = 'Evidenciômetro', y = 'Densidade')
+```
+
+*Densidade das distribuições na escala de evidência quando somente estudos* $H_{1}$ são inclusos na simulação.
+
+<br>
+
+Os diagramas de caixa da **figura 4** também ilustram o perfil das distribuições quantitativas e qualitativas. As primeiras três escalas de evidência apresentam mediana a favor dos limites superiores de cada evidenciômetro, enquanto as quatro últimas apresentam mediana razoavelmente centralizada.
+
+<br>
+
+**Figura 4**. Diagramas de caixa para os níveis de evidência.
+
+```{r echo=FALSE}
+N <- round(runif(10000, 1, 7), 0) 
+H1 <- round(runif(10000, 0, 1000), 0)
+H0 <- round(runif(10000, 0, 1000), 0)
+SzH0 <- round(runif(10000, 1, 1000), 0)
+SdH0 <- round(runif(10000, 0, 100), 0)
+SzH1 <- round(runif(10000, 1, 1000), 0)
+SdH1 <- round(runif(10000, 0, 100), 0)
+EfSzH1 <- runif(10000, 0.1, 10)
+EfSzH0 <- runif(10000, 0.1, 10)
+tdt <- cbind.data.frame(N, H1, H0, SzH0, SzH1, SdH0, SdH1, EfSzH1, EfSzH0)
+
+tut <- list()
+for (i in 1:length(tdt[,1])) {
+  evid_calc(N = tdt[i, 1], 
+            H1 = tdt[i, 2], 
+            H0 = tdt[i, 3], 
+            SzH0 = tdt[i, 4], 
+            SzH1 = tdt[i, 5], 
+            SdH0 = tdt[i, 6], 
+            SdH1 = tdt[i, 7], 
+            EfSzH1 = tdt[i, 8], 
+            EfSzH0 = tdt[i, 9])
+  tut[[i]] <- ev
+}
+
+tut <- as.numeric(tut)
+
+tdt <- cbind(tdt, tut)
+
+quali <- filter(tdt, tdt[,'N'] <= 3)
+quant <- filter(tdt, tdt[,'N'] > 3)
+
+ql<-ggplot(data = quali) + 
+  geom_jitter(aes(x = as.factor(N), y = tut), 
+              cex = 0.01, color = 'black', width = .5) +
+  geom_boxplot(aes(x = as.factor(N), y = tut), 
+               fill = brewer.pal(3, 'BuGn')) +
+  theme(panel.background = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks = element_blank(),
+        axis.line.x = element_line('black', 
+                                   size = .25),
+        axis.line.y = element_line('black', 
+                                   size = .25),
+        axis.title = element_text(size = 10)) + 
+  labs(x = 'Nível de evidência (qualitativo)', 
+       y = 'Evidenciômetro')
+
+qt<-ggplot(data = quant) + 
+  geom_jitter(aes(x = as.factor(N), y = tut), 
+              cex = 0.01, color = 'black', width = .5) +
+  geom_boxplot(aes(x = as.factor(N), y = tut), 
+               fill = brewer.pal(4, 'BuGn')) +
+  theme(panel.background = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks = element_blank(),
+        axis.line.x = element_line('black', 
+                                   size = .25),
+        axis.line.y = element_line('black', 
+                                   size = .25),
+        axis.title = element_text(size = 10)) + 
+  labs(x = 'Nível de evidência (quantitativo)', 
+       y = 'Evidenciômetro')
+
+ggarrange(ql, qt, 
+          labels = c("A", "B"),
+          ncol = 2, nrow = 1)
+```
+
+*Diagramas de caixa indicando os padrões qualitativo e quantitativo de cada nível de evidência. Cada ponto é uma observação simulada do evidenciômetro.*
+
+<br>
+
+#### 3.2 Ferramenta visual do evidenciômetro
+
+<br>
+
+Com base nos itens "2.2 Interface do aplicativo" e "2.3 Servidor", um aplicativo web (*i.e., Shiny web app*) foi desenvolvido para [1] validar o modelo do evidenciômetro nos dados simulados e [2] nos trabalhos coletados de acordo com o item "2.4 Identificação de alegações em saúde e construção de hipóteses".
+
+<br>
+
+##### 3.2.1 Modelo funcional do aplicativo
+
+<br>
+
+Como se observa na **figura 5**, a interface do aplicativo contem um menu lateral com uma caixa de seleção, que lista as alegações processadas pelo evidenciômetro. Na coluna da direita, há uma descrição da ferramenta e um mapa de calor, usado para representar o nível de evidência gerado em cada alegação.
+
+<br>
+
+**Figura 5**. Interface do evidênciômetro em aplicativo web.
+
+![](evid_new.png)
+
+*Modelo de aplicativo para apresentação do evidenciômetro ao público. Note a janela de seleção à esquerda; a alegação selecionada gera um nível de evidência no mapa de calor, ao lado.*
+
+<br>
+
+## 4 Considerações finais
+
+<br>
+
+A tarefa de identificar o consenso científico é complexa; ferramentas como o evidenciômetro podem auxiliar profissionais e indivíduos a identificarem o nível de evidência de alegações, especialmente em saúde, facilitando seu processo de tomada de decisão. Também, na escala de saúde pública, o evidenciômetro pode servir como um mediador a informação ao público, otimizando abordagens em medicina preventiva.
+
+<br>
+
+## Contribuição dos autores
+
+<br>
+
+HRF idealizou o projeto, desenvolveu o modelo, desenvolveu o aplicativo *web* e escreveu parte do texto. PARLG e LLDT coletaram alegações, geraram hipóteses, buscaram evidências na literatura e escreveram parte do texto.
+
+<br>
+
+## Agradecimentos
+
+<br>
+
+Os autores do projeto agradecem aos participantes do Health Lab IBMR pelo suporte durante a elaboração deste trabalho. Em especial, os autores agradecem pelo apoio dos discentes Vitória Teixeira Nogueira, Vitória Ramos da Conceição, Andressa da Silva Guimarães, Isadora Cunha Loredo, Alice Cavalcanti dos Santos, Natália Amaral de Jesus, Gabriel Martins Ramos, Myrella Cercilier Costa Santos e Bárbara Machado da Costa.
+
+<br>
+
+## ORCID
+
+<br>
+
+HRF: 0000-0003-1584-9157
+
+PARLG: 0000-0002-6792-6452
+
+LLDT: 0000-0002-3893-1447
+
+<br>
+
+## Declaração de conflito de interesses
+
+<br>
+
+Os autores declaram não haver conflitos de interesse.
+
+<br>
+
+## Fontes de financiamento
+
+<br>
+
+[1] PROCIÊNCIA 2022/1 - Ecossistema Ânima [ProCiência], projeto nº 3657. [2] Health Lab Ânima Educação, Squad nº 2.
+
+<br>
+
+## Referências
+
+<br>
+
+FREITAS, H. R.. Princípios de Bioética. Niterói: Editora Universo, 2015 (Literatura Nacional / LivroDigital).
+
+<br>
+
+SCHUNEMANN, H. GRADE handbook for grading quality of evidence and strength of recommendation.Version 3.2. <http://www.cc-ims.net/gradepro>, 2008.
+
+<br>
+
+IBGE. Educação : 2019. Rio de Janeiro, 16 p., 311.21:37(81)-E24, 2020.
+
+<br>
+
+LAMBERG L. Rx for Obesity: Eat Less, Exercise More, and---Maybe---Get More Sleep. JAMA.2006;295(20):2341--2344. <doi:10.1001/jama.295.20.2341>.
+
+<br>
+
+PEREIRA, T. S., PEREIRA, R. C., ANGELIS-PEREIRA, M. C. Influência de intervenções educativas noconhecimento sobre alimentação e nutrição de adolescentes de uma escola pública. Ciência & SaúdeColetiva [online]. 2017, v. 22, n. 2, pp. 427-435.
+
+<br>
+
+R Core Team (2022). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL <https://www.R-project.org/.>
+
+<br>
+
+RStudio Team (2022). RStudio: Integrated Development Environment for R. RStudio, PBC, Boston, MA URL <http://www.rstudio.com/.>
+
+<br>
+
+Winston Chang, Joe Cheng, JJ Allaire, Carson Sievert, Barret Schloerke, Yihui Xie, Jeff Allen, Jonathan McPherson, Alan Dipert and Barbara Borges (2021). shiny: Web Application Framework for R. R package version 1.7.1. <https://CRAN.R-project.org/package=shiny>
+
+<br>
+
+Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, <https://doi.org/10.21105/joss.01686>
+
+<br>
+
+Gregory R. Warnes, Ben Bolker, Lodewijk Bonebakker, Robert Gentleman, Wolfgang Huber, Andy Liaw, Thomas Lumley, Martin Maechler, Arni Magnusson, Steffen Moeller, Marc Schwartz and Bill Venables (2020). gplots: Various R Programming Tools for Plotting Data. R package version 3.1.1. <https://CRAN.R-project.org/package=gplots>
+
+<br>
+
+Carson Sievert and Joe Cheng (2021). bslib: Custom 'Bootstrap' 'Sass' Themes for 'shiny' and 'rmarkdown'. R package version 0.3.1. <https://CRAN.R-project.org/package=bslib>
+
+<br>
+
+C. Sievert. Interactive Web-Based Data Visualization with R, plotly, and shiny. Chapman and Hall/CRC Florida, 2020.
+
+<br>
+
+Hao Zhu (2021). kableExtra: Construct Complex Table with 'kable' and Pipe Syntax. R package version 1.3.4. <https://CRAN.R-project.org/package=kableExtra>
+
+<br>
+
+Alboukadel Kassambara (2020). ggpubr: 'ggplot2' Based Publication Ready Plots. R package version 0.4.0. <https://CRAN.R-project.org/package=ggpubr>
+
+<br>
+
+Erich Neuwirth (2014). RColorBrewer: ColorBrewer Palettes. R package version 1.1-2. <https://CRAN.R-project.org/package=RColorBrewer>
